@@ -59,7 +59,7 @@ class PostEditar extends React.Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="mt-5">
-                                <h1>Post</h1>
+                                <h1 className="text-center">Editar Post</h1>
 
                                 <hr />
 

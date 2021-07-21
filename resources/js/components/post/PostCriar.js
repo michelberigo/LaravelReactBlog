@@ -33,20 +33,20 @@ class PostCriar extends React.Component {
                 this.props.history.push('/posts/' + response.data.post.id);
             })
             .catch(error => {
-                this.setPost({
+                this.setState({
                     errors: error.response.data.errors
-                })
+                });
             });
     }
 
     render() {
         return (
             <div className="container">
-                <form onSubmit={this.handleSubmit}>
+                <form id="form_post_criar" onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="mt-5">
-                                <h1>Post</h1>
+                                <h1 className="text-center">Novo Post</h1>
 
                                 <hr />
 
@@ -57,7 +57,7 @@ class PostCriar extends React.Component {
                                 <br />
 
                                 <div className="form-group">
-                                    <textarea rows="3" name="content" className="form-control" placeholder="Content" value={this.state.content} onChange={this.handleChange}></textarea>
+                                    <textarea rows="5" name="content" className="form-control" placeholder="Content" value={this.state.content} onChange={this.handleChange}></textarea>
                                 </div>
 
                                 <br />

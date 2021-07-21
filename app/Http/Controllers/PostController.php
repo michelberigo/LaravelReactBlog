@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Http\Requests\Post\StoreRequest;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,7 @@ class PostController extends Controller
         return response()->json(['posts' => $posts], 200);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $post = Post::create([
             'title' => $request->get('title'),

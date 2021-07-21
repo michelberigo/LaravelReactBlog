@@ -45,7 +45,7 @@ class Posts extends React.Component {
 
                     <div className="card-body">
                         <p className="card-text">{ post.content }</p>
-                        <Link to={ "posts/" + post.id } className="btn btn-outline-info">Link para abrir</Link>
+                        <Link to={ "posts/" + post.id } className="btn btn-outline-info">Ver Post</Link>
                     </div>
                 </div>
             </div>
@@ -76,12 +76,12 @@ class Posts extends React.Component {
 
                             <ReactPaginate
                                 pageCount = { this.state.pageCount }
-                                previousLabel = "Previous"
-                                nextLabel = "Next"
+                                previousLabel = "<"
+                                nextLabel = ">"
                                 breakClassName = "page-item"
                                 breakLinkClassName = "page-link"
                                 onPageChange= { this.handlePageClick }
-                                containerClassName = "pagination"
+                                containerClassName = "pagination justify-content-center"
                                 pageClassName = "page-item"
                                 pageLinkClassName = "page-link"
                                 activeClassName = "active"

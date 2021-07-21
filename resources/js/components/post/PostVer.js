@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Comments from "../comment/Comments";
 
 class PostVer extends React.Component {
     constructor(props) {
         super(props);
 
+        let postId = this.props.match.params.id;
+
         this.state = {
             post: {
+                id: postId,
                 title: '',
                 content: ''
             }
@@ -20,9 +24,7 @@ class PostVer extends React.Component {
     }
 
     fetchPost = () => {
-        let postId = this.props.match.params.id;
-
-        axios.get('/api/posts/' + postId)
+        axios.get('/api/posts/' + this.state.post.id)
             .then(response => {
                 this.setState({post: response.data.post});
             });
@@ -50,21 +52,25 @@ class PostVer extends React.Component {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="mt-5">
-                            <h1>Post</h1>
+                            <h1 className="text-center">Post</h1>
 
                             <hr />
 
-                            <h3>{ this.state.post.title }</h3>
+                            <div className="card">
+                                <h5 className="card-header">{ this.state.post.title }</h5>
 
-                            <p>{ this.state.post.content }</p>
-
-                            <div>
-                                <Link to={ this.state.post.id + '/edit' } className="btn btn-outline-primary" style={{ "marginRight": "5px" }}>Editar</Link>
-                                <button type="button" className="btn btn-outline-danger" onClick={ this.postExcluir }>Excluir</button>
+                                <div className="card-body">
+                                    <p className="card-text">{ this.state.post.content }</p>
+                                    
+                                    <Link to={ this.state.post.id + '/edit' } className="btn btn-outline-primary" style={{ "marginRight": "5px" }}>Editar</Link>
+                                    <button type="button" className="btn btn-outline-danger" onClick={ this.postExcluir }>Excluir</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <Comments post_id={ this.state.post.id } />
             </div>
         )
     }
